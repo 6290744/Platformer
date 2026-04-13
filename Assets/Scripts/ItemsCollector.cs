@@ -9,8 +9,6 @@ public class ItemsCollector : MonoBehaviour
     {
         if (other.TryGetComponent(out ICollectable item))
         {
-            Debug.Log("Собрал");
-            
             item.Collect();
             
             Collected?.Invoke(item);

@@ -14,6 +14,9 @@ public class PlayerMover : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private float _overlapGroundCheckRadius = 0.1f;
     private Direction _currentDirection;
+    private KeyCode _right = KeyCode.D;
+    private KeyCode _left =  KeyCode.A;
+    private KeyCode _jump =  KeyCode.Space;
 
     private bool _isLanded;
 
@@ -33,18 +36,18 @@ public class PlayerMover : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _isLanded)
+        if (Input.GetKeyDown(_jump) && _isLanded)
         {
             Jump();
 
             Jumped?.Invoke();
         }
 
-        if (Input.GetKey(KeyCode.D) && IsTouchedPlatformBy(_rightWallCheck) == false)
+        if (Input.GetKey(_right) && IsTouchedPlatformBy(_rightWallCheck) == false)
         {
             Move(Direction.Right);
         }
-        else if (Input.GetKey(KeyCode.A) && IsTouchedPlatformBy(_leftWallCheck) == false)
+        else if (Input.GetKey(_left) && IsTouchedPlatformBy(_leftWallCheck) == false)
         {
             Move(Direction.Left);
         }
@@ -97,6 +100,7 @@ public class PlayerMover : MonoBehaviour
         }
         else
         { 
+            Stopped?.Invoke();
         }
     }
 
@@ -116,8 +120,6 @@ public class PlayerMover : MonoBehaviour
     {
         yield return new WaitUntil(() => _isLanded == false);
         yield return new WaitUntil(() => _isLanded == true);
-        
-        Debug.Log("IsLanded: " + _isLanded);
     
         Landed?.Invoke();
     }
