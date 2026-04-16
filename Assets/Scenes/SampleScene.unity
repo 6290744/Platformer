@@ -202,9 +202,11 @@ GameObject:
   - component: {fileID: 7216440}
   - component: {fileID: 7216439}
   - component: {fileID: 7216445}
+  - component: {fileID: 7216449}
   - component: {fileID: 7216443}
   - component: {fileID: 7216446}
   - component: {fileID: 7216447}
+  - component: {fileID: 7216448}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -357,10 +359,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f131022ac6814d53987608f6ab16c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _landCheck: {fileID: 1006611239}
+  _platformChecker: {fileID: 7216448}
   _leftWallCheck: {fileID: 1508738211}
   _rightWallCheck: {fileID: 375452821}
-  _jumpStrength: 7
   _speed: 2
 --- !u!50 &7216444
 Rigidbody2D:
@@ -425,6 +426,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78612928f18ad4a21a66f6c062d554e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7216448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7216438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3521298de98304bada9dfa9dbd8e849f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7216449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7216438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b923b05d7a4467083aed9bb34fc00e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _platformChecker: {fileID: 7216448}
+  _landCheck: {fileID: 1006611239}
+  _jumpStrength: 7
 --- !u!1001 &8227352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -729,6 +757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMover: {fileID: 7216443}
+  _playerJumper: {fileID: 7216449}
   _animator: {fileID: 7216439}
   _spriteRenderer: {fileID: 7216441}
 --- !u!1001 &191805738
