@@ -3,23 +3,24 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private PlayerMover _playerMover;
+    [SerializeField] private PlayerJumper _playerJumper;
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private void OnEnable()
     {
         _playerMover.Running += OnPlayerRunning;
-        _playerMover.Jumped += OnPlayerJumped;
         _playerMover.Stopped += OnPlayerStopped;
-        _playerMover.Landed += OnPlayerLanded;
+        _playerJumper.Jumped += OnPlayerJumped;
+        _playerJumper.Landed += OnPlayerLanded;
     }
 
     private void OnDisable()
     {
         _playerMover.Running -= OnPlayerRunning;
-        _playerMover.Jumped -= OnPlayerJumped;
         _playerMover.Stopped -= OnPlayerStopped;
-        _playerMover.Landed -= OnPlayerLanded;
+        _playerJumper.Jumped -= OnPlayerJumped;
+        _playerJumper.Landed -= OnPlayerLanded;
     }
 
     private void OnPlayerJumped()
@@ -39,7 +40,7 @@ public class PlayerAnimator : MonoBehaviour
                 break;
         }
 
-        if (_playerMover.IsLanded)
+        if (_playerJumper.IsLanded)
         {
             _animator.SetBool("Run", true);
         }
