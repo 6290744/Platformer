@@ -23,26 +23,21 @@ public class PlayerJumper : MonoBehaviour
         _isLanded = true;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(_jump) && _isLanded)
-        {
-            Jump();
-
-            Jumped?.Invoke();
-        }
-    }
-
     private void FixedUpdate()
     {
         _isLanded = _platformChecker.IsTouchedPlatformBy(_landCheck);
     }
 
-    private void Jump()
+    public void Jump()
     {
-        _rigidbody.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
+        if (_isLanded)
+        {
+            Jumped?.Invoke();
+            
+            _rigidbody.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
 
-        StartCoroutine(WaitForLanding());
+            StartCoroutine(WaitForLanding());
+        }
     }
 
     private IEnumerator WaitForLanding()

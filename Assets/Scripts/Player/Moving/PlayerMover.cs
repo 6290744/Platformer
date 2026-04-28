@@ -11,8 +11,6 @@ public class PlayerMover : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private Direction _currentDirection;
-    private KeyCode _right = KeyCode.D;
-    private KeyCode _left =  KeyCode.A;
     
     public event Action Running;
     public event Action Stopped;
@@ -25,24 +23,8 @@ public class PlayerMover : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
     }
-
-    private void Update()
-    {
-        if (Input.GetKey(_right) && _platformChecker.IsTouchedPlatformBy(_rightWallCheck) == false)
-        {
-            Move(Direction.Right);
-        }
-        else if (Input.GetKey(_left) && _platformChecker.IsTouchedPlatformBy(_leftWallCheck) == false)
-        {
-            Move(Direction.Left);
-        }
-        else
-        {
-            Move(Direction.None);
-        }
-    }
     
-    private void Move(Direction direction)
+    public void Move(Direction direction)
     {
         switch (direction)
         {

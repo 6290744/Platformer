@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyMover : MonoBehaviour
+public class Patroller : MonoBehaviour
 {
     [SerializeField] private Waypoint[] _waypoints;
     [SerializeField] private float _speed;

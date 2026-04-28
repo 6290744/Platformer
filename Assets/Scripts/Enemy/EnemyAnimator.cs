@@ -3,16 +3,17 @@ using UnityEngine;
 public class EnemyAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private Rotator _rotator;
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private EnemyMover _mover;
+    [SerializeField] private Patroller _patroller;
 
-    Direction _direction;
+    private Direction _direction;
     
     private void Update()
     {
-        if (_mover.IsMoving)
+        if (_patroller.IsMoving)
         {
-            switch (_mover.CurrentDirection)
+            switch (_patroller.CurrentDirection)
             {
                 case Direction.Right:
                     _spriteRenderer.flipX = true;
