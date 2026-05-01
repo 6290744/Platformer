@@ -1,42 +1,46 @@
-
 using UnityEngine;
 
 
 public class GameBootstrap : MonoBehaviour
 {
-    [Header("Collectables")]
-    [SerializeField] private ValueViewer _coinsViewer;
+    [Header("Collectables")] [SerializeField]
+    private ValueViewer _coinsViewer;
+
     [SerializeField] private CoinsCounter _coinsCounter;
     [SerializeField] private ItemsCollector _itemsCollector;
     [SerializeField] private CoinsSpawner _coinSpawner;
     [SerializeField] private Coin _coinPrefab;
     [SerializeField] private SpawnPoint[] spawnPoints;
-    
-    [Header("Player")]
+
+    [Header("Player")] 
     [SerializeField] private PlayerInputReader _playerInputReader;
     [SerializeField] private PlayerJumper _playerJumper;
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private PlayerAnimator _playerAnimator;
-    
+    [SerializeField] private Rotator _playerRotator;
+
     private CollectionHandler _collectionHandler;
-    private PlayerMediator _playerMediator;
+    private PlayerMovementMediator _playerMovementMediator;
+    private EnemyMovementMediator _enemyMovementMediator;
 
     private void Awake()
     {
         _collectionHandler = new CollectionHandler();
+        _playerMovementMediator = new PlayerMovementMediator();
+
         _collectionHandler.Initialize(_itemsCollector, _coinsCounter);
-        
-        _playerMediator  = new PlayerMediator();
-        _playerMediator.Initialize(_playerInputReader, _playerAnimator, _playerMover,  _playerJumper);
-        
+
+        _playerMovementMediator.Initialize(_playerInputReader, _playerAnimator, _playerMover, _playerJumper,
+            _playerRotator);
+
         _coinsViewer.Initialize(_coinsCounter);
-        
+
         _coinSpawner.Initialize(_coinPrefab, spawnPoints);
     }
 
     private void OnDisable()
     {
         _collectionHandler?.Dispose();
-        _playerMediator?.Dispose();
+        _playerMovementMediator?.Dispose();
     }
 }

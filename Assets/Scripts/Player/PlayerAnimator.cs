@@ -4,26 +4,35 @@ public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+
+    private int _runId;
+    private int _jumpId;
+
+    private void Start()
+    {
+       _runId = Animator.StringToHash("Run");
+       _jumpId = Animator.StringToHash("Jump");
+    }
     
     public void PlayRunningAnimation()
     {
-        _animator.SetBool("Run", true);
+        _animator.SetBool(_runId, true);
     }
 
     public void StopRunningAnimation()
     {
-        _animator.SetBool("Run", false);
+        _animator.SetBool(_runId, false);
     }
     
     public void PlayJumpAnimation()
     {
-        _animator.SetBool("Jump", true);
+        _animator.SetBool(_jumpId, true);
     }
 
     public void StopJumpAnimation()
     {
-        _animator.SetBool("Jump", false);
+        _animator.SetBool(_jumpId, false);
         
-        //PlayRunningAnimation();
+        PlayRunningAnimation();
     }
 }

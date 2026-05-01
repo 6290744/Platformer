@@ -1,17 +1,19 @@
-public class PlayerMediator
+public class PlayerMovementMediator
 {
     private PlayerInputReader _inputReader;
     private PlayerMover _playerMover;
     private PlayerJumper _playerJumper;
     private PlayerAnimator _playerAnimator;
+    private Rotator _playerRotation;
 
     public void Initialize(PlayerInputReader inputReader, PlayerAnimator playerAnimator, PlayerMover playerMover,
-        PlayerJumper playerJumper)
+        PlayerJumper playerJumper,  Rotator playerRotation)
     {
         _inputReader = inputReader;
         _playerMover = playerMover;
         _playerAnimator = playerAnimator;
         _playerJumper = playerJumper;
+        _playerRotation = playerRotation;
 
         _inputReader.MoveInput += OnMoveInput;
         _inputReader.JumpInput += OnJumpInput;
@@ -22,34 +24,27 @@ public class PlayerMediator
     }
 
     private void OnMoveInput(Direction direction)
-    {
+    { 
         _playerMover.Move(direction);
+        _playerRotation.RotateTo(direction);
     }
-
-    private void OnJumpInput()
-    {
+    
+    private void OnJumpInput() =>
         _playerJumper.Jump();
-    }
 
-    private void OnRunning()
-    {
+    private void OnRunning() =>
         _playerAnimator.PlayRunningAnimation();
-    }
 
-    private void OnStopped()
-    {
+    private void OnStopped() =>
         _playerAnimator.StopRunningAnimation();
-    }
+    
 
-    private void OnJumped()
-    {
+    private void OnJumped() =>
         _playerAnimator.PlayJumpAnimation();
-    }
+    
 
-    private void OnLanded()
-    {
+    private void OnLanded() =>
         _playerAnimator.StopJumpAnimation();
-    }
 
     public void Dispose()
     {

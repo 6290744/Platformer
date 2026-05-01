@@ -2,8 +2,16 @@ using UnityEngine;
 
 public class Rotator : MonoBehaviour
 {
-    public void Rotate()
+    public void RotateTo(Direction direction)
     {
-        transform.Rotate(Vector3.up, 180f, Space.World);
+        if (direction == Direction.Right)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (direction == Direction.Left)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        
     }
 }
