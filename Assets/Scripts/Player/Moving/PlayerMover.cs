@@ -14,10 +14,6 @@ public class PlayerMover : MonoBehaviour
     
     public event Action Running;
     public event Action Stopped;
-   
-
-    public Direction CurrentDirection => _currentDirection;
-    
 
     private void OnEnable()
     {
@@ -26,29 +22,52 @@ public class PlayerMover : MonoBehaviour
     
     public void Move(Direction direction)
     {
+        if (CanMove(direction))
+        {
+            ApplyVelocity(direction);
+        }
+        
+        UpdateCurrentDirection(direction);
+    }
+
+    private void ApplyVelocity(Direction direction)
+    {
         switch (direction)
         {
             case Direction.Right:
                 _rigidbody.linearVelocityX = _speed;
                 break;
             case Direction.Left:
-                _rigidbody.linearVelocityX = _speed * -1; 
+                _rigidbody.linearVelocityX = _speed * -1;
                 break;
             case Direction.None:
                 _rigidbody.linearVelocityX = 0;
                 break;
         }
+    }
 
-        SetCurrentDirection(direction);
+    private bool CanMove(Direction direction)
+    {
+        if (direction == Direction.Right && _platformChecker.IsTouchedPlatformBy(_rightWallCheck) == false)
+        {
+            return true;
+        } 
+        
+        if (direction == Direction.Left && _platformChecker.IsTouchedPlatformBy(_leftWallCheck) == false)
+        {
+            return true;
+        }
+        
+        return false;
     }
     
-    private void SetCurrentDirection(Direction direction)
+    private void UpdateCurrentDirection(Direction direction)
     {
         if (_currentDirection == direction)
             return;
-
+    
         _currentDirection = direction;
-
+    
         if (_currentDirection != Direction.None)
         {
             Running?.Invoke();
@@ -58,6 +77,4 @@ public class PlayerMover : MonoBehaviour
             Stopped?.Invoke();
         }
     }
-
-    
 }
