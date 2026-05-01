@@ -207,7 +207,6 @@ GameObject:
   - component: {fileID: 7216446}
   - component: {fileID: 7216447}
   - component: {fileID: 7216448}
-  - component: {fileID: 7216450}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -454,19 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _platformChecker: {fileID: 7216448}
   _landCheck: {fileID: 1006611239}
-  _jumpStrength: 2
---- !u!114 &7216450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7216438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 545711b7bc15b489e9c54a359bb2bbb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _jumpStrength: 7
 --- !u!1001 &8227352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1437,7 +1424,6 @@ MonoBehaviour:
   _playerJumper: {fileID: 7216449}
   _playerMover: {fileID: 7216443}
   _playerAnimator: {fileID: 110338282}
-  _playerRotator: {fileID: 7216450}
 --- !u!4 &909866983
 Transform:
   m_ObjectHideFlags: 0

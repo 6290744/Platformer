@@ -8,7 +8,6 @@ public class PlayerInputReader : MonoBehaviour
     private KeyCode _jump = KeyCode.Space;
     
     public event Action<Direction> MoveInput;
-    
     public event Action JumpInput;
     
     private void Update()
@@ -20,10 +19,6 @@ public class PlayerInputReader : MonoBehaviour
         else if (Input.GetKey(_left))
         {
             MoveInput?.Invoke(Direction.Left);
-        }
-        else
-        {
-            MoveInput?.Invoke(Direction.None);
         }
         
         if (Input.GetKey(_jump))
