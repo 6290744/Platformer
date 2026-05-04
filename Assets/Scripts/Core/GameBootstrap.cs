@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class GameBootstrap : MonoBehaviour
 {
     [Header("Collectables")] [SerializeField]
@@ -21,7 +20,6 @@ public class GameBootstrap : MonoBehaviour
 
     private CollectionHandler _collectionHandler;
     private PlayerMovementMediator _playerMovementMediator;
-    private EnemyMovementMediator _enemyMovementMediator;
 
     private void Awake()
     {
