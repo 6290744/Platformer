@@ -3,25 +3,23 @@ using UnityEngine;
 public class EnemyAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private Rotator _rotator;
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private Patroller _patroller;
 
-    private Direction _direction;
+    private int _goId;
     
-    private void Update()
+    private void Start()
     {
-        if (_patroller.IsMoving)
-        {
-            switch (_patroller.CurrentDirection)
-            {
-                case Direction.Right:
-                    _spriteRenderer.flipX = true;
-                    break;
-                case Direction.Left:
-                    _spriteRenderer.flipX = false;
-                    break;
-            }
-        }
+        _goId = Animator.StringToHash("Go");
+
+    }
+
+    public void Move()
+    {
+        _animator.SetBool(_goId, true);
+    }
+
+    public void Stop()
+    {
+        _animator.SetBool(_goId, false);
     }
 }
