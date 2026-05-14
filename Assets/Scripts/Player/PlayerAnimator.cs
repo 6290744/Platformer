@@ -3,36 +3,36 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-
-    private int _runId;
-    private int _jumpId;
-
-    private void Start()
-    {
-       _runId = Animator.StringToHash("Run");
-       _jumpId = Animator.StringToHash("Jump");
-    }
     
     public void PlayRunningAnimation()
     {
-        _animator.SetBool(_runId, true);
+        SetupRunningAnimation(true);
     }
 
     public void StopRunningAnimation()
     {
-        _animator.SetBool(_runId, false);
+        SetupRunningAnimation(false);
     }
     
     public void PlayJumpAnimation()
     {
-        _animator.SetBool(_jumpId, true);
+        SetupJumpAnimation(true);
     }
 
     public void StopJumpAnimation()
     {
-        _animator.SetBool(_jumpId, false);
+        SetupJumpAnimation(false);
         
         PlayRunningAnimation();
+    }
+    
+    private void SetupRunningAnimation(bool isRunning)
+    {
+        _animator.SetBool(PlayerAnimatorData.Params.Run, isRunning);
+    }
+
+    private void SetupJumpAnimation(bool isJumped)
+    {
+        _animator.SetBool(PlayerAnimatorData.Params.Jump, isJumped);
     }
 }
