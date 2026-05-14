@@ -26,7 +26,7 @@ public class Patroller : MonoBehaviour
         _destinationPoint = NextPoint();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (_isPatrolling)
         {
@@ -37,17 +37,6 @@ public class Patroller : MonoBehaviour
                 StartCoroutine(SetNextPoint());
             }
         }
-    }
-    
-    private Vector2 NextPoint()
-    {
-        _currentDestinationPointIndex = (_currentDestinationPointIndex + 1) % _waypoints.Length;
-        
-        Vector2 nextDestinationPoint = _waypoints[_currentDestinationPointIndex].transform.position;
-        
-        NotifyMovingTo(nextDestinationPoint);
-            
-        return nextDestinationPoint;
     }
 
     private IEnumerator SetNextPoint()
@@ -61,6 +50,17 @@ public class Patroller : MonoBehaviour
         _destinationPoint = NextPoint();
         
         _isPatrolling = true;
+    }
+    
+    private Vector2 NextPoint()
+    {
+        _currentDestinationPointIndex = (_currentDestinationPointIndex + 1) % _waypoints.Length;
+        
+        Vector2 nextDestinationPoint = _waypoints[_currentDestinationPointIndex].transform.position;
+        
+        NotifyMovingTo(nextDestinationPoint);
+            
+        return nextDestinationPoint;
     }
 
     private bool IsReached(Vector2 destinationPoint)

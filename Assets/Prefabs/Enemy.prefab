@@ -126,6 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a7b8fa1a2e6478fbcb2979191793f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _patroller: {fileID: 3522957115996622174}
+  _animator: {fileID: 4961915644192419702}
+  _rotator: {fileID: 2256025307679962525}
 --- !u!114 &3522957115996622174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 4061573457035482438}
-  _spriteRenderer: {fileID: 671035770497992882}
 --- !u!114 &2256025307679962525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,53 +290,5 @@ Transform:
   - {fileID: 7241793182307707397}
   - {fileID: 3006809284750368265}
   - {fileID: 3889948560175782715}
-  - {fileID: 1006127742451969594}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8972435505093018536
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1006127742451969594}
-  - component: {fileID: 3133761306201526225}
-  m_Layer: 0
-  m_Name: Mediator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1006127742451969594
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8972435505093018536}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.07249999, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1301273951743229207}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3133761306201526225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8972435505093018536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a5fa58b9f9034270a1a98f726c502b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _patroller: {fileID: 3522957115996622174}
-  _animator: {fileID: 4961915644192419702}
-  _rotator: {fileID: 2256025307679962525}
